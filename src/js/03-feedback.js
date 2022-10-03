@@ -32,12 +32,13 @@ function showDataHandler() {
 function submitDataHandler(event) {
   event.preventDefault();
 
-  const {
-    elements: { email, message },
-  } = event.currentTarget;
+  const { email, message } = event.currentTarget.elements;
 
-  console.log({ email: email.value, message: message.value });
-
-  event.currentTarget.reset();
-  remove(LOCAL_STORAGE_KEY);
+  if (email.value === '' || message.value === '') {
+    window.alert('Заповніть всі поля');
+  } else {
+    console.log({ email: email.value, message: message.value });
+    event.currentTarget.reset();
+    remove(LOCAL_STORAGE_KEY);
+  }
 }
